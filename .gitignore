@@ -1,0 +1,66 @@
+# PHP関連の.gitignore設定
+
+# Composer
+/vendor/
+/composer.lock
+
+# PHPUnit
+/phpunit.xml
+/phpunit.xml.dist
+
+# Laravel
+/.env
+/.env.backup
+/.env.local
+/.env.development
+/.env.testing
+/.env.production
+/storage/*.key
+/storage/logs/*.log
+/storage/framework/cache/data/*
+/storage/framework/sessions/*
+/storage/framework/testing/*
+/storage/framework/views/*
+/bootstrap/cache/*.php
+
+# Symfony
+/.env.local.php
+/.env.*.local
+/.env.local
+/var/
+/vendor/
+
+# CakePHP
+/tmp/
+/logs/
+/config/app.php
+
+# CodeIgniter
+/application/config/config.php
+/application/config/database.php
+/application/logs/
+/application/cache/
+
+# Yii
+/runtime/
+/vendor/
+
+# Zend Framework
+/config/autoload/local.php
+/config/autoload/*.local.php
+/data/cache/
+/data/logs/
+
+# その他
+*.log
+*.cache
+*.tmp
+*.bak
+*.swp
+*.swo
+*.DS_Store
+Thumbs.db
+*.~
+
+# project
+/htdocs/

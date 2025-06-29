@@ -1,1 +1,1 @@
-# chika-idol-calender
+# chika-idol-calendar
