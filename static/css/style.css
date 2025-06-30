@@ -1,0 +1,231 @@
+:root {
+    --primary-pink: #FFD1DC;
+    --secondary-pink: #FFE4E9;
+    --accent-pink: #FF69B4;
+    --text-dark: #333333;
+    --text-light: #666666;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--secondary-pink);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+}
+
+/* ナビゲーションバーのスタイル */
+.navbar {
+    background-color: var(--accent-pink) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand, .nav-link {
+    color: white !important;
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* メインコンテンツエリア */
+main {
+    flex: 1;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* カレンダー全体のスタイル */
+#calendar {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.fc {
+    height: calc(100vh - 180px) !important;
+}
+
+/* カレンダーヘッダーのスタイル */
+.fc-toolbar-title {
+    color: var(--text-dark) !important;
+    font-size: 1.5rem !important;
+}
+
+.fc-button-primary {
+    background-color: var(--accent-pink) !important;
+    border-color: var(--accent-pink) !important;
+}
+
+/* イベントのスタイル */
+.fc-event {
+    background-color: var(--accent-pink) !important;
+    border: none !important;
+    padding: 3px 5px !important;
+    border-radius: 4px !important;
+    color: white !important;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+/* モーダルのスタイル */
+.modal-content {
+    border-radius: 12px;
+    border: none;
+}
+
+.modal-header {
+    background-color: var(--primary-pink);
+    border-radius: 12px 12px 0 0;
+    border-bottom: none;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+/* フッターのスタイル */
+footer {
+    background-color: var(--primary-pink);
+    padding: 1rem 0;
+    text-align: center;
+    margin-top: auto;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .fc-toolbar {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .fc-toolbar-title {
+        font-size: 1.2rem !important;
+    }
+
+    .fc {
+        height: calc(100vh - 220px) !important;
+    }
+
+    .fc-view {
+        padding: 0 !important;
+    }
+
+    .fc-event {
+        font-size: 0.8em;
+    }
+
+    main {
+        padding: 0.5rem;
+    }
+}
+
+/* イベントリストのスタイル */
+.list-group-item {
+    transition: all 0.2s ease-in-out;
+    border-left: 4px solid var(--accent-pink);
+}
+
+.list-group-item:hover {
+    background-color: var(--secondary-pink);
+    transform: translateX(5px);
+}
+
+/* イベント詳細のスタイル */
+#eventModalBody h4 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#eventModalBody p {
+    margin-bottom: 15px;
+}
+
+#eventModalBody .btn {
+    margin-top: 10px;
+}
+
+/* モバイル対応のスタイル */
+@media (max-width: 768px) {
+    .fc .fc-toolbar {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .fc .fc-toolbar-title {
+        font-size: 1.2rem;
+    }
+
+    .fc .fc-button {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .fc .fc-list-event-title {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+
+    .fc .fc-list-event-time {
+        font-size: 0.8rem;
+    }
+
+    .fc .fc-list-day-cushion {
+        padding: 0.5rem;
+    }
+
+    /* イベントリスト表示のスタイル */
+    .fc-list-view {
+        border: none !important;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        background: white;
+    }
+
+    .fc-list-event {
+        border-bottom: 1px solid var(--secondary-pink) !important;
+        padding: 0.5rem 0;
+    }
+
+    .fc-list-event:hover {
+        background-color: var(--secondary-pink) !important;
+    }
+
+    .fc-list-event-dot {
+        border-color: var(--accent-pink) !important;
+    }
+
+    /* モーダルのスタイル調整 */
+    .modal-content {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .event-detail-row {
+        margin-bottom: 0.8rem;
+    }
+
+    .event-detail-icon {
+        font-size: 0.9rem;
+    }
+
+    .event-detail-content {
+        font-size: 0.9rem;
+    }
+}
+
+/* イベントリストのアニメーション */
+.fc-list-event {
+    transition: background-color 0.3s ease;
+}
+
+/* スマートフォンでのスクロール改善 */
+.fc-scroller {
+    -webkit-overflow-scrolling: touch;
+} 
