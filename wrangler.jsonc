@@ -1,0 +1,30 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "chika-idol-calendar",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-08-15",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "observability": {
+    "enabled": true,
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true,
+    },
+  },
+  "vars": {
+    "APP_ENV": "staging",
+  },
+  "env": {
+    "staging": {
+      "name": "chika-idol-calendar-staging",
+      "workers_dev": true,
+      "vars": { "APP_ENV": "staging" },
+    },
+    "production": {
+      "name": "chika-idol-calendar-production",
+      "workers_dev": true,
+      "vars": { "APP_ENV": "production" },
+    },
+  },
+}

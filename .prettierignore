@@ -1,0 +1,8 @@
+node_modules
+.wrangler
+coverage
+dist
+worker-configuration.d.ts
+infra/**/*.tf
+**/.terraform
+package-lock.json

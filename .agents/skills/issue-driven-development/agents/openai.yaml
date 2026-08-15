@@ -1,0 +1,4 @@
+interface:
+  display_name: "Issue-driven Development"
+  short_description: "Issue先行・1 Issue 1 PRの開発フローを安全に実行する"
+  default_prompt: "Use $issue-driven-development to take one approved GitHub issue through a validated draft pull request."
