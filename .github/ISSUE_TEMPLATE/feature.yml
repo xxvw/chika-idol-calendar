@@ -1,0 +1,35 @@
+name: 機能提案
+description: 利用者価値のある機能を提案する
+title: "[Feature]: "
+labels: ["needs-triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 解決したい課題
+      description: 誰が、どのような状況で困っているかを説明してください。
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 提案
+      description: 望ましい結果を説明してください。実装方法の指定は任意です。
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 代替案
+  - type: textarea
+    id: scope
+    attributes:
+      label: 対象外
+      description: この提案で扱わないことがあれば記載してください。
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 確認
+      options:
+        - label: 同じ内容の Open Issue がないことを確認しました。
+          required: true
