@@ -9,6 +9,7 @@ export default tseslint.config(
       "coverage/",
       "dist/",
       "worker-configuration.d.ts",
+      "src/database.types.ts",
     ],
   },
   eslint.configs.recommended,

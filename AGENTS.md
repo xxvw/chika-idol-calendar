@@ -32,6 +32,16 @@
 - Cloudflare DashboardでTerraform管理対象を手動変更しない。
 - stagingは`development`、productionは`main`からのみデプロイする。
 
+## Supabase Database
+
+- PostgreSQL schemaの正は`supabase/migrations`とし、Supabase Dashboardでschemaを直接変更しない。
+- ブラウザからSupabaseへ直接接続させず、Cloudflare Workerを公開API境界にする。`service_role` keyやDB接続文字列をクライアントへ渡さない。
+- DB変更は空のローカル環境へmigrationを再適用し、SQLテストと生成型差分を確認する。
+- remote Supabaseへの`link`、`db push`、migration、seed、resetは、対象環境と明示承認を確認するまで実行しない。
+- `supabase db reset --linked`をproductionに対して実行しない。stagingでも破棄可能と明示された場合だけ許可する。
+- stagingとproductionは別Supabase projectを使用し、認証情報と接続先をGitHub Environmentごとに分離する。
+- 大量データ検証には実在人物や実在X投稿を使わず、固定seedの合成データだけを使用する。
+
 ## セキュリティ
 
 - API Token、Account ID以外の秘密情報、`.dev.vars`、Terraform stateをコミットしない。Account IDもGitHub Environment secretとして扱う。
