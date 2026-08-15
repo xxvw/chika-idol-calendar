@@ -19,8 +19,8 @@
 
 | Profile | Groups | Members | Memberships |    Events | Appearances |     Links | Event tags |     Seed |        DB |    Tables |   Indexes |
 | ------- | -----: | ------: | ----------: | --------: | ----------: | --------: | ---------: | -------: | --------: | --------: | --------: |
-| medium  |  2,000 |  10,000 |      12,000 |   100,000 |     500,000 |   200,000 |    200,000 |  14.14秒 | 376.3 MiB | 152.3 MiB | 211.8 MiB |
-| large   | 10,000 |  50,000 |      60,000 | 1,000,000 |   5,000,000 | 2,000,000 |  2,000,000 | 128.20秒 |  3.58 GiB |  1.48 GiB |  2.09 GiB |
+| medium  |  2,000 |  10,000 |      12,000 |   100,000 |     500,000 |   200,000 |    200,000 |  11.28秒 | 376.7 MiB | 152.3 MiB | 211.8 MiB |
+| large   | 10,000 |  50,000 |      60,000 | 1,000,000 |   5,000,000 | 2,000,000 |  2,000,000 | 124.42秒 |  3.58 GiB |  1.48 GiB |  2.09 GiB |
 
 ## medium結果
 
@@ -28,38 +28,38 @@
 
 | Query                  | First |   p50 |   p95 |   p99 | Rows | Seq Scan                   |
 | ---------------------- | ----: | ----: | ----: | ----: | ---: | -------------------------- |
-| event_title_substring  | 4.860 | 1.003 | 1.185 | 1.435 |   50 | event_aliases              |
-| group_alias_substring  | 0.544 | 0.352 | 0.400 | 0.430 |    2 | group_aliases, idol_groups |
-| member_alias_substring | 1.374 | 0.994 | 1.091 | 1.270 |   10 | member_aliases, members    |
-| date_prefecture_filter | 5.878 | 3.313 | 3.798 | 3.933 |   19 | event_venues, venues       |
-| group_event_filter     | 2.451 | 0.657 | 0.765 | 1.025 |   50 | なし                       |
-| member_event_filter    | 1.168 | 0.891 | 0.956 | 1.032 |   50 | なし                       |
-| compound_event_filter  | 4.772 | 1.140 | 1.955 | 2.358 |   28 | なし                       |
-| event_detail           | 0.658 | 0.211 | 0.318 | 0.558 |    1 | なし                       |
-| keyset_pagination      | 0.565 | 0.139 | 0.196 | 0.263 |   20 | なし                       |
+| event_title_substring  | 4.409 | 1.205 | 2.084 | 2.522 |   50 | event_aliases              |
+| group_alias_substring  | 1.090 | 0.358 | 0.435 | 0.526 |    2 | group_aliases, idol_groups |
+| member_alias_substring | 1.370 | 1.039 | 1.370 | 1.637 |   10 | member_aliases, members    |
+| date_prefecture_filter | 1.475 | 0.667 | 0.736 | 0.783 |   19 | venues                     |
+| group_event_filter     | 2.142 | 0.640 | 0.728 | 0.844 |   50 | なし                       |
+| member_event_filter    | 1.242 | 0.869 | 1.215 | 1.339 |   50 | なし                       |
+| compound_event_filter  | 5.622 | 0.976 | 1.456 | 1.664 |   28 | なし                       |
+| event_detail           | 0.681 | 0.205 | 0.247 | 0.315 |    1 | なし                       |
+| keyset_pagination      | 0.437 | 0.125 | 0.147 | 0.168 |   20 | なし                       |
 
 ## large結果
 
-| Query                  |  First |   p50 |    p95 |    p99 | Rows | Seq Scan                   |
-| ---------------------- | -----: | ----: | -----: | -----: | ---: | -------------------------- |
-| event_title_substring  | 49.304 | 3.464 |  4.386 |  5.230 |   50 | なし                       |
-| group_alias_substring  |  3.513 | 1.143 |  1.304 |  1.393 |   10 | group_aliases, idol_groups |
-| member_alias_substring | 19.257 | 1.036 |  1.339 |  1.586 |   50 | なし                       |
-| date_prefecture_filter | 58.212 | 2.393 |  2.803 |  3.195 |   50 | なし                       |
-| group_event_filter     | 29.683 | 1.356 |  1.848 |  2.072 |   50 | なし                       |
-| member_event_filter    |  3.636 | 1.650 |  1.979 |  2.259 |   50 | なし                       |
-| compound_event_filter  | 34.146 | 9.583 | 12.723 | 17.943 |   50 | なし                       |
-| event_detail           |  6.823 | 0.215 |  0.275 |  0.336 |    1 | なし                       |
-| keyset_pagination      |  1.134 | 0.138 |  0.178 |  0.239 |   20 | なし                       |
+| Query                  |  First |   p50 |   p95 |    p99 | Rows | Seq Scan                   |
+| ---------------------- | -----: | ----: | ----: | -----: | ---: | -------------------------- |
+| event_title_substring  | 18.863 | 3.209 | 3.575 |  4.134 |   50 | なし                       |
+| group_alias_substring  |  1.863 | 1.057 | 1.135 |  1.195 |   10 | group_aliases, idol_groups |
+| member_alias_substring |  4.847 | 1.007 | 1.226 |  1.326 |   50 | なし                       |
+| date_prefecture_filter |  9.728 | 4.469 | 4.764 |  5.120 |   50 | なし                       |
+| group_event_filter     |  9.870 | 1.206 | 1.325 |  1.403 |   50 | なし                       |
+| member_event_filter    |  1.940 | 1.603 | 1.970 |  2.308 |   50 | なし                       |
+| compound_event_filter  | 20.296 | 8.289 | 9.333 | 11.270 |   50 | なし                       |
+| event_detail           |  0.948 | 0.209 | 0.250 |  0.271 |    1 | なし                       |
+| keyset_pagination      |  0.496 | 0.132 | 0.159 |  0.190 |   20 | なし                       |
 
 ## 評価
 
-- 100万イベント時も最も重い複合filterのp95は12.723msだった。
-- メンバーから所属グループの出演を検索するqueryは、候補eventを索引から集めることでp95 1.979msだった。
-- `(starts_at, id)`部分索引によりkeyset paginationはp95 0.178msで、events全走査はない。
+- 100万イベント時も最も重い複合filterのp95は9.333msだった。
+- メンバーから所属グループの出演を検索するqueryは、候補eventを索引から集めることでp95 1.970msだった。
+- `(starts_at, id)`部分索引によりkeyset paginationはp95 0.159msで、events全走査はない。
 - large profileのイベント名、メンバー名、地域、出演者、複合filterは高件数tableを全走査しない。
-- 10,000行の`idol_groups`と`group_aliases`だけはPostgreSQLがGINより全走査を選択したが、p95は1.304msだった。`enable_seqscan`で索引を強制せず、データ増加時に再測定する。
-- mediumの`event_venues`全走査は100,000行・p95 3.798msで、largeでは`idx_event_venues_venue_event`へ切り替わり全走査が消えた。
+- 10,000行の`idol_groups`と`group_aliases`だけはPostgreSQLがGINより全走査を選択したが、p95は1.135msだった。`enable_seqscan`で索引を強制せず、データ増加時に再測定する。
+- 地域filterは都道府県に該当する会場IDを先に確定し、`idx_event_venues_venue_event`からイベントを取得する。medium・largeとも`event_venues`の全走査はない。
 
 ## 再実行
 
