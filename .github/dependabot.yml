@@ -1,0 +1,34 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      timezone: Asia/Tokyo
+    target-branch: development
+    labels: ["maintenance"]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      timezone: Asia/Tokyo
+    target-branch: development
+    labels: ["maintenance"]
+  - package-ecosystem: terraform
+    directory: /infra/environments/staging
+    schedule:
+      interval: weekly
+      day: monday
+      timezone: Asia/Tokyo
+    target-branch: development
+    labels: ["maintenance", "infrastructure"]
+  - package-ecosystem: terraform
+    directory: /infra/environments/production
+    schedule:
+      interval: weekly
+      day: monday
+      timezone: Asia/Tokyo
+    target-branch: development
+    labels: ["maintenance", "infrastructure"]

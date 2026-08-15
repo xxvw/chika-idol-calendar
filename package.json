@@ -1,0 +1,38 @@
+{
+  "name": "chika-idol-calendar",
+  "version": "0.0.0",
+  "private": true,
+  "description": "複数の地下アイドルの予定をまとめて確認するカレンダーアプリ",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "wrangler dev --env staging",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "types": "wrangler types",
+    "types:check": "wrangler types --check",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "deploy:dry-run:staging": "wrangler deploy --env staging --dry-run",
+    "deploy:dry-run:production": "wrangler deploy --env production --dry-run",
+    "deploy:staging": "wrangler deploy --env staging",
+    "deploy:production": "wrangler deploy --env production",
+    "terraform:check": "terraform fmt -check -recursive infra && terraform -chdir=infra/environments/staging init -backend=false && terraform -chdir=infra/environments/staging validate && terraform -chdir=infra/environments/production init -backend=false && terraform -chdir=infra/environments/production validate",
+    "check": "npm run format:check && npm run lint && npm run types:check && npm run typecheck && npm run test && npm run deploy:dry-run:staging && npm run deploy:dry-run:production && npm run terraform:check"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "0.21.3",
+    "@eslint/js": "10.0.1",
+    "@types/node": "26.2.0",
+    "eslint": "10.8.1",
+    "prettier": "3.9.6",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.67.0",
+    "vitest": "4.1.10",
+    "wrangler": "4.123.0"
+  }
+}

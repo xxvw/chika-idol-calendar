@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cloudflare Delivery"
+  short_description: "Cloudflareの環境別IaCと安全なデプロイ手順を実行する"
+  default_prompt: "Use $cloudflare-delivery to validate and deliver a Cloudflare change safely across staging and production."

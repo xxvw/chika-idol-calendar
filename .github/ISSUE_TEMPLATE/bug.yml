@@ -1,0 +1,44 @@
+name: 不具合報告
+description: 再現可能な不具合を報告する
+title: "[Bug]: "
+labels: ["needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: セキュリティ問題はこのフォームに書かず、Private Vulnerability Reporting を利用してください。
+  - type: textarea
+    id: summary
+    attributes:
+      label: 概要
+      description: 何が起きたかを簡潔に説明してください。
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 再現手順
+      placeholder: "1. …\n2. …"
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期待する動作
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 環境
+      description: URL、ブラウザ、OS、対象コミットなど。秘密情報は記載しないでください。
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 確認
+      options:
+        - label: 同じ内容の Open Issue がないことを確認しました。
+          required: true
+        - label: セキュリティ脆弱性の報告ではありません。
+          required: true

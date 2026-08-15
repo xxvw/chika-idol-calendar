@@ -1,0 +1,38 @@
+name: 作業 Issue
+description: 合意済みの保守・設計・実装作業を定義する
+title: "[Task]: "
+labels: ["needs-triage"]
+body:
+  - type: textarea
+    id: purpose
+    attributes:
+      label: 目的
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: 対象
+      description: この Issue の1つの成果物を定義してください。
+    validations:
+      required: true
+  - type: textarea
+    id: out-of-scope
+    attributes:
+      label: 対象外
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 受け入れ条件
+      placeholder: "- [ ] …"
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 確認
+      options:
+        - label: この Issue に対応する通常 PR は1件だけにします。
+          required: true
