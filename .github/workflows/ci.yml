@@ -43,3 +43,26 @@ jobs:
       - run: terraform -chdir=infra/environments/staging validate
       - run: terraform -chdir=infra/environments/production init -backend=false
       - run: terraform -chdir=infra/environments/production validate
+
+  database:
+    name: database
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - name: Start local Supabase database
+        run: >-
+          npx supabase start
+          --exclude gotrue,realtime,storage-api,imgproxy,kong,mailpit,postgrest,postgres-meta,studio,edge-runtime,logflare,vector,supavisor
+      - run: npm run db:reset
+      - run: npm run db:test
+      - run: npm run db:types:check
+      - name: Run synthetic database benchmark smoke test
+        run: npm run db:benchmark:ci -- --output=/tmp/chika-idol-calendar-ci-benchmark.json
+      - name: Stop local Supabase
+        if: always()
+        run: npx supabase stop --no-backup

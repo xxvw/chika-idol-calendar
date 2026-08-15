@@ -1,0 +1,4 @@
+interface:
+  display_name: "Supabase Database Development"
+  short_description: "Supabase DB変更を安全に設計・検証・配布する"
+  default_prompt: "Use $supabase-database-development to design and validate a Supabase database change."
