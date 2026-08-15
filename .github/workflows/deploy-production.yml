@@ -34,8 +34,5 @@ jobs:
       - name: Smoke test
         env:
           DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
-        run: |
-          test -n "$DEPLOYMENT_URL"
-          curl --fail --silent --show-error --retry 5 --retry-all-errors \
-            "$DEPLOYMENT_URL/health" | tee health.json
-          node -e 'const fs=require("node:fs"); const body=JSON.parse(fs.readFileSync("health.json","utf8")); if(body.status!=="ok"||body.environment!=="production") process.exit(1)'
+          EXPECTED_ENVIRONMENT: production
+        run: node scripts/smoke-test.mjs

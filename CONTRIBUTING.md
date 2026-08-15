@@ -28,7 +28,7 @@ docs/125-contribution-guide
 chore/126-update-tooling
 ```
 
-`main`と`development`へ直接pushしないでください。空リポジトリ作成時のbootstrap commitだけが例外です。
+`main`と`development`へ直接pushしないでください。空リポジトリ作成時のbootstrap commitと、Issue #12で承認された一度限りの履歴同期だけが例外です。
 
 ## 開発と検証
 
@@ -51,6 +51,7 @@ Terraformで最初のstateful resourceを追加する前に、R2 remote stateを
 - 通常PRの本文に`Closes #<Issue番号>`をちょうど1件記載する。
 - 変更理由、影響、検証結果、対象外を記載する。
 - CIが成功し、レビュー可能になったらReady for reviewへ変更する。
-- squash mergeを使用する。
+- 通常PRはsquash mergeを使用する。
+- `development`から`main`への昇格PRだけは、長期ブランチの祖先関係を保つためmerge commitを使用する。
 
 PRを送信することで、そのコントリビューションを本リポジトリと同じMIT Licenseで提供することに同意したものとします。
