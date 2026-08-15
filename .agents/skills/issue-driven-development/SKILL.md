@@ -18,6 +18,6 @@ description: GitHub Issue を起点に、1 Issue・1 Pull Request の規約で�
 
 ## Exceptions
 
-- `development` から `main` への昇格 PR は Issue 参照を要求しない。
+- `development` から `main` への昇格 PR は Issue 参照を要求せず、長期ブランチの祖先関係を保つためmerge commitで統合する。
 - Dependabot PR と maintainer が `security-exception` を付けた非公開セキュリティ修正は例外にできる。
 - 例外を通常作業の便宜のために使用しない。

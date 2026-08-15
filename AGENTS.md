@@ -5,7 +5,7 @@
 - 変更前に対応するOpen Issueを確認する。Issueがなければ、実装を始める前に作成する。
 - 通常変更では1件のIssueだけを対象にし、受け入れ条件と対象外を確認する。
 - `development`の最新状態から`<type>/<issue番号>-<slug>`形式のブランチを作成する。
-- `main`と`development`へ直接pushしない。初回の空bootstrap commitだけを例外とする。
+- `main`と`development`へ直接pushしない。初回の空bootstrap commitと、Issue #12で承認された一度限りの履歴同期だけを例外とする。
 
 ## Pull Request
 
@@ -13,7 +13,8 @@
 - 最初はDraft PRとして作成し、変更理由、利用者・開発者への影響、検証結果を記載する。
 - `development`から`main`への昇格PR、Dependabot、`security-exception`ラベル付き修正だけはIssue 1対1ルールの例外とする。
 - `main`向けPRは`development`からの昇格PRだけにする。
-- squash mergeを前提に、PRのタイトルだけで変更全体が説明できるようにする。
+- 通常PRはsquash mergeする。`development`から`main`への昇格PRだけは、長期ブランチの祖先関係を保つためmerge commitを使用する。
+- PRのタイトルだけで変更全体が説明できるようにする。
 
 ## 実装と検証
 

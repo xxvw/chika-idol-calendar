@@ -19,7 +19,7 @@ description: Cloudflare Workers と Terraform の変更を、staging と product
 4. Use separate staging and production API tokens scoped to the intended account and only the permissions required. Never reuse a broad global API key.
 5. Run `npm ci && npm run check`. Terraform initialization must use `-backend=false`; do not run `apply` for the empty skeleton.
 6. Merge normal changes to `development`, deploy to staging, and verify `/health` reports `staging`.
-7. Promote only with a `development` to `main` PR. Require the production GitHub Environment approval, deploy production, and verify `/health` reports `production`.
+7. Promote only with a `development` to `main` PR and merge it with a merge commit to preserve long-lived branch ancestry. Require the production GitHub Environment approval, deploy production, and verify `/health` reports `production`.
 8. If smoke testing fails, stop promotion and inspect the deployment URL and structured logs. Do not bypass the health check.
 
 ## Initial account setup
