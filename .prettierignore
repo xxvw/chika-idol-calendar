@@ -6,3 +6,10 @@ worker-configuration.d.ts
 infra/**/*.tf
 **/.terraform
 package-lock.json
+
+# Supabase and benchmark generated files
+src/database.types.ts
+docs/db/results/*.json
+supabase/config.toml
+supabase/**/*.sql
+supabase/.temp
