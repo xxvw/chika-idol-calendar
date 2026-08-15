@@ -320,7 +320,7 @@ async function seedDatabase(config) {
   await client.query("analyze app.group_memberships");
   await client.query("analyze app.events");
   await client.query("analyze app.event_aliases");
-  await client.query("analyze app.event_venues");
+  await client.query("vacuum (analyze) app.event_venues");
   await client.query("analyze app.event_appearances");
   await client.query("analyze app.event_tags");
   await client.query("analyze app.external_links");
@@ -375,15 +375,24 @@ const benchmarkQueries = [
   {
     name: "date_prefecture_filter",
     sql: `
+      with venue_ids as materialized (
+        select id from app.venues where prefecture_code = any($3::text[])
+      ),
+      matched_events as materialized (
+        select venue_events.event_id
+        from venue_ids venue
+        cross join lateral (
+          select event_id
+          from app.event_venues
+          where venue_id = venue.id
+          offset 0
+        ) venue_events
+      )
       select e.id, e.title, e.start_date
-      from app.events e
+      from matched_events matched
+      join app.events e on e.id = matched.event_id
       where e.publication_status = 'published'
         and e.start_date >= $1 and e.start_date < $2
-        and exists (
-          select 1 from app.event_venues ev
-          join app.venues v on v.id = ev.venue_id
-          where ev.event_id = e.id and v.prefecture_code = any($3::text[])
-        )
       order by e.start_date, e.id limit 50`,
     values: ["2026-08-01", "2026-08-08", ["13", "14"]],
   },
